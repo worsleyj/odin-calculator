@@ -35,9 +35,18 @@ seven.addEventListener("click", () => {buttonInput(seven);})
 eight.addEventListener("click", () => {buttonInput(eight);})
 nine.addEventListener("click", () => {buttonInput(nine);})
 
+plus.addEventListener("click", () => {operation(plus);})
+minus.addEventListener("click", () => {operation(minus);})
+times.addEventListener("click", () => {operation(times);})
+div.addEventListener("click", () => {operation(div);})
+
 clear.addEventListener("click", () => {
     display = 0;
     setDisplay();
+})
+
+equals.addEventListener("click", () => {
+    calculate();
 })
 
 function add(num1, num2) {
@@ -57,6 +66,8 @@ function divide(num1, num2) {
 }
 
 function operate(num1, num2, operator) {
+    num1 = num1/1;
+    num2 = num2/1;
     if (operator == "+") {
         return add(num1, num2);
     } else if (operator == "-") {
@@ -80,4 +91,19 @@ function buttonInput(button) {
     }
     setDisplay();
 
+}
+
+function calculate() {
+    num2 = display;
+    display = operate(num1, num2, operator);
+    setDisplay();
+    num1 = 0;
+    num2 = 0;
+}
+
+function operation(button) {
+    num1 = display;
+    display = 0;
+    setDisplay();
+    operator = button.textContent;
 }
