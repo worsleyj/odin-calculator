@@ -18,6 +18,12 @@ const eight = document.querySelector("#eight");
 const nine = document.querySelector("#nine");
 const clear = document.querySelector("#clear");
 
+const plus = document.querySelector("#plus");
+const minus = document.querySelector("#minus");
+const times = document.querySelector("#times");
+const div = document.querySelector("#div");
+const equals = document.querySelector("#equals");
+
 zero.addEventListener("click", () => {buttonInput(zero);})
 one.addEventListener("click", () => {buttonInput(one);})
 two.addEventListener("click", () => {buttonInput(two);})
@@ -62,6 +68,10 @@ function operate(num1, num2, operator) {
     }
 }
 
+function setDisplay() {
+    displayValue.textContent = display;
+}
+
 function buttonInput(button) {
     if(display == 0) {
         display = button.textContent;
@@ -70,7 +80,4 @@ function buttonInput(button) {
     }
     setDisplay();
 
-}
-function setDisplay() {
-    displayValue.textContent = display;
 }
