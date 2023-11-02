@@ -1,3 +1,13 @@
+// debug settings
+const DEBUG_MODE = true;
+const debug = document.querySelector("#debug-console");
+
+if (DEBUG_MODE != true) {
+    debug.innerHTML = ""
+}
+
+// main program 
+
 let num1 = 0;
 let num2 = 0;
 let operator = "";
@@ -35,7 +45,12 @@ seven.addEventListener("click", () => {buttonInput(seven);})
 eight.addEventListener("click", () => {buttonInput(eight);})
 nine.addEventListener("click", () => {buttonInput(nine);})
 
-plus.addEventListener("click", () => {operation(plus);})
+plus.addEventListener("click", () => {
+    if(operator != "") {
+        calculate
+    }
+    operation(plus);
+})
 minus.addEventListener("click", () => {operation(minus);})
 times.addEventListener("click", () => {operation(times);})
 div.addEventListener("click", () => {operation(div);})
@@ -43,10 +58,15 @@ div.addEventListener("click", () => {operation(div);})
 clear.addEventListener("click", () => {
     display = 0;
     setDisplay();
+
+    if(DEBUG_MODE == true) {    
+        debug.innerHTML= "DEBUG: ";
+    }
 })
 
 equals.addEventListener("click", () => {
     calculate();
+    operator = "";
 })
 
 function add(num1, num2) {
@@ -99,11 +119,19 @@ function calculate() {
     setDisplay();
     num1 = 0;
     num2 = 0;
-}
+
+    if(DEBUG_MODE == true) {    
+        debug.appendChild(document.createTextNode(" " + display)); }
+    }
 
 function operation(button) {
     num1 = display;
     display = 0;
     setDisplay();
-    operator = button.textContent;
+    if(operator != "") {
+        operator = button.textContent;
+        calculate();
+    } else {
+        operator = button.textContent;
+    }
 }
