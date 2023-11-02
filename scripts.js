@@ -6,8 +6,7 @@ if (DEBUG_MODE != true) {
     debug.innerHTML = ""
 }
 
-// main program 
-
+// main code
 let num1 = 0;
 let num2 = 0;
 let operator = "";
@@ -45,12 +44,7 @@ seven.addEventListener("click", () => {buttonInput(seven);})
 eight.addEventListener("click", () => {buttonInput(eight);})
 nine.addEventListener("click", () => {buttonInput(nine);})
 
-plus.addEventListener("click", () => {
-    if(operator != "") {
-        calculate
-    }
-    operation(plus);
-})
+plus.addEventListener("click", () => {operation(plus);})
 minus.addEventListener("click", () => {operation(minus);})
 times.addEventListener("click", () => {operation(times);})
 div.addEventListener("click", () => {operation(div);})
@@ -99,8 +93,8 @@ function operate(num1, num2, operator) {
     }
 }
 
-function setDisplay() {
-    displayValue.textContent = display;
+function setDisplay(value) {
+    displayValue.textContent = value;
 }
 
 function buttonInput(button) {
@@ -116,22 +110,21 @@ function buttonInput(button) {
 function calculate() {
     num2 = display;
     display = operate(num1, num2, operator);
+
+    if(DEBUG_MODE == true) {
+        const item = document.createElement("li");
+        item.textContent = (num1 + " " + operator + " " + num2 + " = " + display);
+        debug.appendChild(item);
+    }
+
     setDisplay();
     num1 = 0;
     num2 = 0;
-
-    if(DEBUG_MODE == true) {    
-        debug.appendChild(document.createTextNode(" " + display)); }
     }
 
 function operation(button) {
     num1 = display;
     display = 0;
     setDisplay();
-    if(operator != "") {
-        operator = button.textContent;
-        calculate();
-    } else {
-        operator = button.textContent;
-    }
+    operator = button.textContent;
 }
