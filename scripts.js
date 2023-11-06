@@ -54,7 +54,7 @@ function add(num1, num2) {
 }
 
 function subtract(num1, num2) {
-    return num1 - num2;
+    return num2 - num1;
 }
 
 function multiply(num1, num2) {
@@ -62,7 +62,7 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-    return num1 / num2;
+    return num2 / num1;
 }
 
 function operate(num1, num2, operator) {
@@ -74,8 +74,10 @@ function operate(num1, num2, operator) {
         return subtract(num1, num2);
     } else if (operator == "*") {
         return multiply(num1, num2);
-    } else {
+    } else if (operator == "/") {
         return divide(num1, num2);
+    } else { 
+        setDisplay(num1);
     }
 }
 
@@ -101,21 +103,3 @@ function calculate() {
     num1 = operate(num1, num2, operator);
     setDisplay(num1);
 }
-// function buttonInput(button) {
-//     display = button.textContent;
-//     setDisplay(button.textContent);
-// }
-
-// function operation(button) {
-//     num1 = display;
-//     display = 0;
-//     if(operator == "") {
-//         operator = button.textContent;
-//         setDisplay(operator);
-//     } else {
-//         // calculate();
-//         operator = button.textContent;
-//         setDisplay(operator);
-//     }
-    
-// }
