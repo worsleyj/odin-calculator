@@ -1,5 +1,6 @@
 let num1 = 0;
 let num2 = 0;
+let total = 0;
 let operator = "";
 
 const displayValue = document.querySelector("#display");
@@ -42,6 +43,7 @@ div.addEventListener("click", () => {operation(div);})
 
 clear.addEventListener("click", () => {
     setDisplay(0);
+    num1 = num2 = 0;
 })
 
 equals.addEventListener("click", () => {
@@ -77,7 +79,7 @@ function operate(num1, num2, operator) {
     } else if (operator == "/") {
         return divide(num1, num2);
     } else { 
-        setDisplay(num1);
+        return num1;
     }
 }
 
@@ -85,12 +87,16 @@ function setDisplay(value) {
     displayValue.textContent = value;
 }
 function buttonInput(button) {
-    setDisplay(button.textContent);
-    num2 = num1;
-    num1 = button.textContent;
+    if(num1 == 0) {
+        num1 = button.textContent;
+    } else {
+        num1 = num1 + button.textContent;
+    }
+    setDisplay(num1);
 }
 
 function operation(button) {
+    num2 = num1;
     if (operator == "") {
         operator = button.textContent;
     } else {
@@ -100,6 +106,7 @@ function operation(button) {
 }
 
 function calculate() {
-    num1 = operate(num1, num2, operator);
-    setDisplay(num1);
+    total = operate(num1, num2, operator);
+    setDisplay(total);
+    num1 = 0;
 }

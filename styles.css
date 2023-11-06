@@ -1,8 +1,25 @@
+* {
+    background: #222831; 
+    color: #f2f2f2;
+}
+
 button {
-    width: 50px;
-    height: 50px;
+    background-color: #f96d00;
+    width: 75px;
+    height: 75px;
 }
 
 #display {
     font-size: 50px;
+}
+
+#calculator-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#row {
+    margin-top: 5px;
 }
