@@ -25,13 +25,14 @@ const six = document.querySelector("#six");
 const seven = document.querySelector("#seven");
 const eight = document.querySelector("#eight");
 const nine = document.querySelector("#nine");
-const clear = document.querySelector("#clear");
 
 const plus = document.querySelector("#plus");
 const minus = document.querySelector("#minus");
 const times = document.querySelector("#times");
 const div = document.querySelector("#div");
 const equals = document.querySelector("#equals");
+const clear = document.querySelector("#clear");
+
 
 zero.addEventListener("click", () => {buttonInput(zero);})
 one.addEventListener("click", () => {buttonInput(one);})
@@ -51,7 +52,7 @@ div.addEventListener("click", () => {operation(div);})
 
 clear.addEventListener("click", () => {
     display = 0;
-    setDisplay();
+    setDisplay(display);
 
     if(DEBUG_MODE == true) {    
         debug.innerHTML= "DEBUG: ";
@@ -96,35 +97,53 @@ function operate(num1, num2, operator) {
 function setDisplay(value) {
     displayValue.textContent = value;
 }
-
 function buttonInput(button) {
-    if(display == 0) {
-        display = button.textContent;
-    } else {
-        display = display + button.textContent;
-    }
-    setDisplay();
+    setDisplay(button.textContent);
+    num2 = num1;
+    num1 = button.textContent;
+}
 
+function operation(button) {
+    if (operator == "") {
+        operator = button.textContent;
+    } else {
+        calculate();
+        operator = button.textContent;
+    }
 }
 
 function calculate() {
-    num2 = display;
-    display = operate(num1, num2, operator);
-
-    if(DEBUG_MODE == true) {
-        const item = document.createElement("li");
-        item.textContent = (num1 + " " + operator + " " + num2 + " = " + display);
-        debug.appendChild(item);
-    }
-
-    setDisplay();
-    num1 = 0;
-    num2 = 0;
-    }
-
-function operation(button) {
-    num1 = display;
-    display = 0;
-    setDisplay();
-    operator = button.textContent;
+    num1 = operate(num1, num2, operator);
+    setDisplay(num1);
 }
+// function buttonInput(button) {
+//     display = button.textContent;
+//     setDisplay(button.textContent);
+// }
+
+// function calculate() {
+//     num2 = display;
+//     num1 = operate(num1, num2, operator);
+
+//     // if(DEBUG_MODE == true) {
+//     //     const item = document.createElement("li");
+//     //     item.textContent = (num1 + " " + operator + " " + num2 + " = " + display);
+//     //     debug.appendChild(item);
+//     // }
+
+//     setDisplay(num1);
+//     }
+
+// function operation(button) {
+//     num1 = display;
+//     display = 0;
+//     if(operator == "") {
+//         operator = button.textContent;
+//         setDisplay(operator);
+//     } else {
+//         // calculate();
+//         operator = button.textContent;
+//         setDisplay(operator);
+//     }
+    
+// }
