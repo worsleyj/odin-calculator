@@ -1,19 +1,9 @@
-// debug settings
-const DEBUG_MODE = true;
-const debug = document.querySelector("#debug-console");
-
-if (DEBUG_MODE != true) {
-    debug.innerHTML = ""
-}
-
-// main code
 let num1 = 0;
 let num2 = 0;
 let operator = "";
-let display = "0"
 
 const displayValue = document.querySelector("#display");
-displayValue.textContent = display;
+displayValue.textContent = 0;
 
 const zero = document.querySelector("#zero");
 const one = document.querySelector("#one");
@@ -51,12 +41,7 @@ times.addEventListener("click", () => {operation(times);})
 div.addEventListener("click", () => {operation(div);})
 
 clear.addEventListener("click", () => {
-    display = 0;
-    setDisplay(display);
-
-    if(DEBUG_MODE == true) {    
-        debug.innerHTML= "DEBUG: ";
-    }
+    setDisplay(0);
 })
 
 equals.addEventListener("click", () => {
@@ -120,19 +105,6 @@ function calculate() {
 //     display = button.textContent;
 //     setDisplay(button.textContent);
 // }
-
-// function calculate() {
-//     num2 = display;
-//     num1 = operate(num1, num2, operator);
-
-//     // if(DEBUG_MODE == true) {
-//     //     const item = document.createElement("li");
-//     //     item.textContent = (num1 + " " + operator + " " + num2 + " = " + display);
-//     //     debug.appendChild(item);
-//     // }
-
-//     setDisplay(num1);
-//     }
 
 // function operation(button) {
 //     num1 = display;
