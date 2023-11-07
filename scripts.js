@@ -43,7 +43,7 @@ div.addEventListener("click", () => {operation(div);})
 
 clear.addEventListener("click", () => {
     setDisplay(0);
-    num1 = num2 = 0;
+    num1 = num2 = total = 0;
 })
 
 equals.addEventListener("click", () => {
@@ -64,7 +64,11 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-    return num2 / num1;
+    if(num1 != 0) {
+        return num2 / num1;
+    } else {
+        setDisplay("Cannot divide by zero!");
+    }
 }
 
 function operate(num1, num2, operator) {
@@ -97,6 +101,7 @@ function buttonInput(button) {
 
 function operation(button) {
     num2 = num1;
+    setDisplay(num1 + "   " + button.textContent)
     if (operator == "") {
         operator = button.textContent;
     } else {

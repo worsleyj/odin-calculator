@@ -1,5 +1,5 @@
 * {
-    background: #222831; 
+	background: #393e46; 
     color: #f2f2f2;
 }
 
@@ -7,8 +7,12 @@ button {
     background-color: #f96d00;
     width: 75px;
     height: 75px;
+    font-size: 50px;
 }
 
+#zero {
+    width: 155px;
+}
 #display {
     font-size: 50px;
 }
