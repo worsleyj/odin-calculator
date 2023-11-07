@@ -59,7 +59,11 @@ div.addEventListener("click", () => {operation(div);})
 // })
 
 backspace.addEventListener("click", () => {
-    num1 = num1.substring(0, num1.length-1);
+    if (num1.length > 1) {
+        num1 = num1.substring(0, num1.length-1);
+    } else { 
+        num1 = 0;
+    }
     setDisplay(num1);
 })
 
