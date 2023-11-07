@@ -53,10 +53,10 @@ minus.addEventListener("click", () => {operation(minus);})
 times.addEventListener("click", () => {operation(times);})
 div.addEventListener("click", () => {operation(div);})
 
-decimal.addEventListener("click", () => {
-    num1 = num1 + ".";
-    setDisplay(num1);
-})
+// decimal.addEventListener("click", () => {
+//     num1 = num1 + ".";
+//     setDisplay(num1);
+// })
 
 backspace.addEventListener("click", () => {
     num1 = num1.substring(0, num1.length-1);

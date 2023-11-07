@@ -10,9 +10,11 @@ button {
     font-size: 50px;
 }
 
-#zero {
+
+#zero, #backspace {
     width: 154px;
 }
+
 #display {
     font-size: 50px;
 }
