@@ -6,6 +6,16 @@ let operator = "";
 const displayValue = document.querySelector("#display");
 displayValue.textContent = 0;
 
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach(button => button.addEventListener("mouseover", () => {
+    button.style.backgroundColor = "grey";
+}));
+
+buttons.forEach(button => button.addEventListener("mouseleave", () => {
+    button.style.backgroundColor = "#f96d00";
+}));
+
 const zero = document.querySelector("#zero");
 const one = document.querySelector("#one");
 const two = document.querySelector("#two");
@@ -22,6 +32,7 @@ const minus = document.querySelector("#minus");
 const times = document.querySelector("#times");
 const div = document.querySelector("#div");
 const equals = document.querySelector("#equals");
+const decimal = document.querySelector("#decimal");
 const backspace = document.querySelector("#backspace");
 const clear = document.querySelector("#clear");
 
@@ -41,6 +52,11 @@ plus.addEventListener("click", () => {operation(plus);})
 minus.addEventListener("click", () => {operation(minus);})
 times.addEventListener("click", () => {operation(times);})
 div.addEventListener("click", () => {operation(div);})
+
+decimal.addEventListener("click", () => {
+    num1 = num1 + ".";
+    setDisplay(num1);
+})
 
 backspace.addEventListener("click", () => {
     num1 = num1.substring(0, num1.length-1);
@@ -73,7 +89,10 @@ function divide(num1, num2) {
     if(num1 != 0) {
         return num2 / num1;
     } else {
-        setDisplay("Cannot divide by zero!");
+        alert("Cannot Divide by Zero!");
+        setDisplay(0);
+        num1 = num2 = total = 0;
+        return num1;
     }
 }
 
