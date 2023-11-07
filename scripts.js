@@ -91,7 +91,7 @@ function setDisplay(value) {
     displayValue.textContent = value;
 }
 function buttonInput(button) {
-    if(num1 == 0) {
+    if(num1 == total || num1 == 0) {
         num1 = button.textContent;
     } else {
         num1 = num1 + button.textContent;
@@ -101,7 +101,8 @@ function buttonInput(button) {
 
 function operation(button) {
     num2 = num1;
-    setDisplay(num1 + "   " + button.textContent)
+    num1 = 0;
+    setDisplay(num2 + "   " + button.textContent)
     if (operator == "") {
         operator = button.textContent;
     } else {
@@ -113,5 +114,5 @@ function operation(button) {
 function calculate() {
     total = operate(num1, num2, operator);
     setDisplay(total);
-    num1 = 0;
+    num1 = total;
 }
