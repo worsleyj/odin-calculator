@@ -22,6 +22,7 @@ const minus = document.querySelector("#minus");
 const times = document.querySelector("#times");
 const div = document.querySelector("#div");
 const equals = document.querySelector("#equals");
+const backspace = document.querySelector("#backspace");
 const clear = document.querySelector("#clear");
 
 
@@ -40,6 +41,11 @@ plus.addEventListener("click", () => {operation(plus);})
 minus.addEventListener("click", () => {operation(minus);})
 times.addEventListener("click", () => {operation(times);})
 div.addEventListener("click", () => {operation(div);})
+
+backspace.addEventListener("click", () => {
+    num1 = num1.substring(0, num1.length-1);
+    setDisplay(num1);
+})
 
 clear.addEventListener("click", () => {
     setDisplay(0);
