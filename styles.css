@@ -11,10 +11,23 @@ button {
 }
 
 
-#zero, #backspace {
+#zero, #backspace, #clear {
     width: 154px;
 }
 
+#backspace, #clear {
+    background-color: red;
+}
+
+#plus, #minus, #times, #div {
+    background-color: blueviolet;
+}
+
+#equals {
+    background-color: white;
+    color: #f96d00;
+    font-weight: 500;
+}
 #display {
     font-size: 50px;
 }

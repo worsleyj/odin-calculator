@@ -13,7 +13,7 @@ buttons.forEach(button => button.addEventListener("mouseover", () => {
 }));
 
 buttons.forEach(button => button.addEventListener("mouseleave", () => {
-    button.style.backgroundColor = "#f96d00";
+    button.style.backgroundColor = "";
 }));
 
 const zero = document.querySelector("#zero");
