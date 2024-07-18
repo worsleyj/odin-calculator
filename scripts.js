@@ -73,8 +73,8 @@ function inputNum(num) {
 }
 
 function updateDisplay() {
-    // let roundedDisplayValue = +(Number(displayValue)).toFixed(2);
-    display.textContent = displayValue;
+    let roundedDisplayValue = +(Number(displayValue)).toFixed(5);
+    display.textContent = roundedDisplayValue;
 
     if (DEBUG == 1) {
         console.log("NUM 1: " + num1 + ", NUM 2: " + num2 + ", OP: " + operator);
