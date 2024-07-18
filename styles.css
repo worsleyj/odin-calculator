@@ -3,14 +3,19 @@
     color: #f2f2f2;
 }
 
-/* button {
+button {
     background-color: #f96d00;
     width: 75px;
     height: 75px;
     font-size: 50px;
 }
 
-
+.display {
+    width: 150px;
+    background-color: #f2f2f2;
+    color: #f96d00;
+}
+/*
 #zero, #backspace, #clear {
     width: 154px;
 }
