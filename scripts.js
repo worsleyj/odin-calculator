@@ -1,28 +1,42 @@
 let num1 = 0;
 let num2 = 0;
+let displayValue = 0;
 let operator = "";
 
-const addBtn = document.querySelector(".add-button");
-const subtractBtn = document.querySelector(".subtract-button");
-const multiplyBtn = document.querySelector(".multiply-button");
-const divideBtn = document.querySelector(".divide-button");
+const display = document.querySelector(".display");
+display.textContent = displayValue;
 
-addBtn.addEventListener("click", () => {
-    operator = "+";
+const numBtns = document.querySelectorAll(".num-button");
+const operatorBtns = document.querySelectorAll(".operator-button");
+const equalsBtn = document.querySelector(".equals-button");
+
+numBtns.forEach(numBtn => {
+    numBtn.addEventListener("click", () => {
+        if (displayValue == 0 || displayValue == "INV") {
+            displayValue = numBtn.textContent;
+        } else {
+            displayValue += numBtn.textContent;
+        }
+        console.log(displayValue);
+        updateDisplay();
+    })
 })
 
-subtractBtn.addEventListener("click", () => {
-    operator = "-";
+operatorBtns.forEach(operatorBtn => {
+    operatorBtn.addEventListener("click", () => {
+        operator = operatorBtn.textContent;
+        console.log(operator);
+    })
 })
 
-multiplyBtn.addEventListener("click", () => {
-    operator = "*";
+equalsBtn.addEventListener("click", () => {
+    displayValue = operate(operator, num1, num2)
+    updateDisplay();
 })
 
-divideBtn.addEventListener("click", () => {
-    operator = "/";
-})
-
+function updateDisplay() {
+    display.textContent = displayValue;
+}
 
 function add(num1, num2){
     return num1 + num2;
@@ -49,7 +63,7 @@ function operate(operator, num1, num2) {
         return multiply(num1, num2);
     } else if (operator == "/") {
         return divide(num1, num2);
-    } else return "INVALID OPERATOR";
+    } else return "INV";
 }
 
 
