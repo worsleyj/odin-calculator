@@ -3,6 +3,8 @@ let num2 = 0;
 let displayValue = 0;
 let operator = "";
 
+const DEBUG = 1;
+
 const display = document.querySelector(".display");
 display.textContent = displayValue;
 
@@ -25,17 +27,41 @@ numBtns.forEach(numBtn => {
 operatorBtns.forEach(operatorBtn => {
     operatorBtn.addEventListener("click", () => {
         operator = operatorBtn.textContent;
-        console.log(operator);
+        if (num1 == 0) {
+            inputNum(num1);
+        } else if (num2 == 0) {
+            inputNum(num2);
+        }
     })
 })
 
 equalsBtn.addEventListener("click", () => {
-    displayValue = operate(operator, num1, num2)
+    num2 = displayValue;
+    displayValue = operate(operator, parseInt(num1), parseInt(num2))
     updateDisplay();
 })
 
+function inputNum(num) {
+    if (num == num1) {
+        num1 = displayValue;
+        displayValue = 0;
+        updateDisplay();
+    } else if (num == num2) {
+        num2 = displayValue;
+        displayValue = 0;
+        updateDisplay();
+    }
+}
+
 function updateDisplay() {
     display.textContent = displayValue;
+
+    if (DEBUG == 1) {
+        console.log("NUM 1: " + num1);
+        console.log("NUM 2: " + num2);
+        console.log("OP: " + operator);
+
+    }
 }
 
 function add(num1, num2){
