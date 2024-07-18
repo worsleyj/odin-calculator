@@ -26,18 +26,29 @@ numBtns.forEach(numBtn => {
 
 operatorBtns.forEach(operatorBtn => {
     operatorBtn.addEventListener("click", () => {
-        operator = operatorBtn.textContent;
         if (num1 == 0) {
+            console.log("ONE");
+
             inputNum(num1);
         } else if (num2 == 0) {
+            console.log("TWO");
+
             inputNum(num2);
         }
+        if (operator != "") {
+            console.log("THREE");
+            num1 = operate(operator, parseInt(num1), parseInt(num2));
+            num2 = displayValue;
+            updateDisplay();
+        }
+
+        operator = operatorBtn.textContent;
     })
 })
 
 equalsBtn.addEventListener("click", () => {
     num2 = displayValue;
-    displayValue = operate(operator, parseInt(num1), parseInt(num2))
+    displayValue = operate(operator, parseInt(num1), parseInt(num2));
     updateDisplay();
 })
 
@@ -57,10 +68,7 @@ function updateDisplay() {
     display.textContent = displayValue;
 
     if (DEBUG == 1) {
-        console.log("NUM 1: " + num1);
-        console.log("NUM 2: " + num2);
-        console.log("OP: " + operator);
-
+        console.log("NUM 1: " + num1 + ", NUM 2: " + num2 + ", OP: " + operator);
     }
 }
 
@@ -92,5 +100,3 @@ function operate(operator, num1, num2) {
     } else return "INV";
 }
 
-
-console.log(operate("*", 4, 5));
