@@ -47,7 +47,11 @@ operatorBtns.forEach(operatorBtn => {
 equalsBtn.addEventListener("click", () => {
     num2 = displayValue;
     displayValue = operate(operator, parseInt(num1), parseInt(num2));
+    num1 = displayValue;
+    num2 = 0;
+    operator = "";
     updateDisplay();
+    displayValue = 0;
 })
 
 function clear() {
@@ -69,6 +73,7 @@ function inputNum(num) {
 }
 
 function updateDisplay() {
+    // let roundedDisplayValue = +(Number(displayValue)).toFixed(2);
     display.textContent = displayValue;
 
     if (DEBUG == 1) {
