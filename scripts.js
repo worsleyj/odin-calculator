@@ -6,11 +6,20 @@ let operator = "";
 const DEBUG = 1;
 
 const display = document.querySelector(".display");
-display.textContent = displayValue;
+updateDisplay();
 
 const numBtns = document.querySelectorAll(".num-button");
 const operatorBtns = document.querySelectorAll(".operator-button");
 const equalsBtn = document.querySelector(".equals-button");
+const clearBtn = document.querySelector(".clear-button");
+
+clearBtn.addEventListener("click", () => {
+    num1 = 0;
+    num2 = 0;
+    displayValue = 0;
+    operator = "";
+    updateDisplay();
+})
 
 numBtns.forEach(numBtn => {
     numBtn.addEventListener("click", () => {
