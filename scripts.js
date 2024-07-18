@@ -13,13 +13,7 @@ const operatorBtns = document.querySelectorAll(".operator-button");
 const equalsBtn = document.querySelector(".equals-button");
 const clearBtn = document.querySelector(".clear-button");
 
-clearBtn.addEventListener("click", () => {
-    num1 = 0;
-    num2 = 0;
-    displayValue = 0;
-    operator = "";
-    updateDisplay();
-})
+clearBtn.addEventListener("click", clear);
 
 numBtns.forEach(numBtn => {
     numBtn.addEventListener("click", () => {
@@ -36,16 +30,11 @@ numBtns.forEach(numBtn => {
 operatorBtns.forEach(operatorBtn => {
     operatorBtn.addEventListener("click", () => {
         if (num1 == 0) {
-            console.log("ONE");
-
             inputNum(num1);
         } else if (num2 == 0) {
-            console.log("TWO");
-
             inputNum(num2);
         }
         if (operator != "") {
-            console.log("THREE");
             num1 = operate(operator, parseInt(num1), parseInt(num2));
             num2 = displayValue;
             updateDisplay();
@@ -61,15 +50,21 @@ equalsBtn.addEventListener("click", () => {
     updateDisplay();
 })
 
+function clear() {
+    num1 = 0;
+    num2 = 0;
+    displayValue = 0;
+    operator = "";
+    updateDisplay();
+}
+
 function inputNum(num) {
     if (num == num1) {
         num1 = displayValue;
         displayValue = 0;
-        updateDisplay();
     } else if (num == num2) {
         num2 = displayValue;
         displayValue = 0;
-        updateDisplay();
     }
 }
 
@@ -106,6 +101,6 @@ function operate(operator, num1, num2) {
         return multiply(num1, num2);
     } else if (operator == "/") {
         return divide(num1, num2);
-    } else return "INV";
+    } else return num2;
 }
 
