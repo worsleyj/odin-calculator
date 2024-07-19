@@ -95,6 +95,7 @@ function multiply(num1, num2){
 
 function divide(num1, num2){
     if (num2 == 0) {
+        clear();
         return 0;
     } else return num1 / num2;
 }
