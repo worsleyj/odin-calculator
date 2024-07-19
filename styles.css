@@ -36,10 +36,16 @@ button {
 }
 
 .clear-button {
+    width: 40%;
+}
+
+#zero {
     flex-grow: 1;
 }
 
-
+.equals-button {
+    flex-grow: 1;
+}
 /*
 #zero, #backspace, #clear {
     width: 154px;
