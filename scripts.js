@@ -34,7 +34,7 @@ operatorBtns.forEach(operatorBtn => {
         } else if (num2 == 0) {
             inputNum(num2);
         }
-        if (operator != "") {
+        if (operator != "" && operator) {
             num1 = operate(operator, parseInt(num1), parseInt(num2));
             num2 = displayValue;
             updateDisplay();
@@ -111,4 +111,3 @@ function operate(operator, num1, num2) {
         return divide(num1, num2);
     } else return num2;
 }
-
